@@ -18,11 +18,16 @@ get(): Observable<Libro[]>{
 return this.http.get<Libro[]>(this.url);
 }
 
-post(libro: Libro): Observable<any>{
+post(libro: Libro): Observable<any> {
   return this.http.post(this.url, libro, {responseType: 'text'});
 }
 
-put(libro: Libro): Observable<any>{
-  return this.http.put(this.url, libro, { responseType: 'text'});
+put(libro: Libro, idactual: number): Observable<any> {
+  return this.http.put(`${this.url}/${idactual}`, libro, { responseType: 'text'});
 }
+
+delete(libro: Libro): Observable<any>{
+  return this.http.delete(`${this.url}/${libro.id}`, { responseType: 'text' });
+}
+
 }
