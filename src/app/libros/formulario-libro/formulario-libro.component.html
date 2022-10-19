@@ -5,16 +5,31 @@
     </p-inputNumber>
     <small *ngIf="!codigoValido" id="codigo-help" class="p-error block">Ingrese código del libro</small>
 </div>
+
 <div class="field">
     <label for="titulo">Título</label>
     <input id="titulo" type="text" class="w-full" [(ngModel)]="titulo" pInputText
         [ngClass]="{'ng-invalid': !tituloValido, 'ng-dirty': !tituloValido}">
     <small *ngIf="!tituloValido" id="titulo-help" class="p-error block">Añada el título</small>
 </div>
+
 <div class="field">
     <label for="autor">Autor</label>
-    <input id="autor" type="text" class="w-full" [(ngModel)]="autor" pInputText
-        [ngClass]="{'ng-invalid': !autorValido, 'ng-dirty': !autorValido}">
+
+<p-dropdown 
+id="autor" 
+class="w-full" 
+styleClass="w-full" 
+[options]="listaAutores" 
+[(ngModel)]="idautor" 
+optionLabel="nombre" 
+optionValue="id"
+[showClear]="true"
+placeholder="Seleccionar..."
+></p-dropdown>
+
+    <!--<input id="autor" type="text" class="w-full" [(ngModel)]="autor" pInputText
+        [ngClass]="{'ng-invalid': !autorValido, 'ng-dirty': !autorValido}">-->
     <small *ngIf="!autorValido" id="autor-help" class="p-error block">Ingrese autor del libro</small>
 </div>
 <div class=field>
@@ -27,12 +42,8 @@
 </div>
 <div class="field">
     <button pButton label="Guardar" icon="pi pi-save" (click)="guardar()" [loading]="guardando"></button>
-<button
- pButton label="Limpiar" 
- icon="pi pi-trash" 
- class="p-button-secondary" 
- style="margin-left: 10px;"
- (click)="limpiarFormulario()">
-</button>
+    <button pButton label="Limpiar" icon="pi pi-trash" class="p-button-secondary" style="margin-left: 10px;"
+        (click)="limpiarFormulario()">
+    </button>
 </div>
 <p-messages [(value)]="mensajes"></p-messages>

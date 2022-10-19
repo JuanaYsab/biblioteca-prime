@@ -22,7 +22,7 @@ post(libro: Libro): Observable<any> {
   return this.http.post(this.url, libro, {responseType: 'text'});
 }
 
-put(libro: Libro, idactual: number): Observable<any> {
+put(libro: Libro, idactual: number): Observable<any>{
   return this.http.put(`${this.url}/${idactual}`, libro, { responseType: 'text'});
 }
 
